@@ -50,3 +50,5 @@ resultado
 --------------------------------------------------------
 
 Compactando arquivo
+
+tar -cf testShell00.tar testShell00
