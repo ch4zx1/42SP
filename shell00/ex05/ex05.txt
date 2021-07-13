@@ -1,0 +1,102 @@
+Nesse exercicio vamos escrever um shell curto que retornará a lista de arquivos
+ignorados no seu repositirio git atualmente no repositirio local.
+
+Para isso acontecer, vamos precisar primeiro, criar o arquivo .gitignore no diretorio
+raiz do nosso repositorio. 
+No meu caso, meu repositirio e o shell00, onde ha minhas pastas de exercicio (ex: ex00)
+
+Para criar o arquivo vamos usar o comando touch
+touch .gitignore
+
+Logo, um ls -la vai nos retornar o conteudo da nossa pasta e se o arquivo foi criado.
+(o prefixo -l e usado para mostrar a lista no formato longo)
+(o prefixo -a e usado para mostrar arquivos com prefixo .)
+
+O retorno vai ser parecido com esse:
+[ch4z@asus shell00]$ ls -la
+total 44
+drwxr-xr-x 11 ch4z ch4z 4096 jul 13 15:19 .
+drwxr-xr-x  4 ch4z ch4z 4096 jul 13 09:41 ..
+drwxr-xr-x  2 ch4z ch4z 4096 jul 13 11:57 ex00
+drwxr-xr-x  2 ch4z ch4z 4096 jul 13 11:57 ex01
+drwxr-xr-x  4 ch4z ch4z 4096 jul 13 11:57 ex02
+drwxr-xr-x  2 ch4z ch4z 4096 jul 13 12:00 ex03
+drwxr-xr-x  2 ch4z ch4z 4096 jul 13 12:16 ex04
+drwxr-xr-x  2 ch4z ch4z 4096 jul 13 15:09 ex05
+drwxr-xr-x  2 ch4z ch4z 4096 jul 13 12:51 ex06
+drwxr-xr-x  2 ch4z ch4z 4096 jul 13 13:33 ex07
+drwxr-xr-x  2 ch4z ch4z 4096 jul 13 13:50 ex08
+-rw-r--r--  1 ch4z ch4z    0 jul 13 15:19 .gitignore
+[ch4z@asus shell00]$ 
+
+E ali esta nosso .gitignore
+
+Agora precisamos configurar ele, escrever dentro o que queremos ignorar.
+no meu caso, vou ignorar todos arquivos com .ignorar, pra isso vou 
+adicionar *.ignorar, onde * significa todos os arquivos com 
+prefiro .ignorar, independente do nome. 
+
+para editar vou usar o vim com o comando: vim .gitignore
+adiciono na primeira linha "*.ignorar"
+esc para sair do modo edicao, : para escrever comandos para o vim e wq pra salvar. (w = write e q = quit).
+
+para conferir se foi adicionado, vou dar um cat no arquivo .gitignore
+se tudo ocorreu bem, o resultado vai ser esse:
+
+[ch4z@asus shell00]$ cat .gitignore
+*.ignorar
+[ch4z@asus shell00]$ 
+
+agora vamos adicionar o .gitignore ao nosso repositorio remoto com o comando:
+git add .gitignore
+
+voltando para a pasta ex05, vou criar um teste.ignorar com touch:
+touch teste.ignorar
+
+conferindo se o arquivo foi criado com ls
+
+[ch4z@asus ex05]$ ls
+ex05.txt  git_ignore.sh  teste.ignorar
+
+--------------------------------------------------------------------------------------
+
+para criar o nosso script, a documentacao do git check-ignore vai ser util.
+(https://git-scm.com/docs/git-check-ignore)
+
+esse comando e bem basico, para verificar os arquivos ignorados, basta rodar o seguinte comando: 
+git check-ignore * 
+
+onde:
+check-ignore = verifica se o arquivo esta incluido no .gitignore e exibe o caminho caso for verdadeiro.
+* = verifica o diretorio atual. 
+
+rodando esse comando, vamos ter o seguinte resultado:
+[ch4z@asus ex05]$ git check-ignore *
+teste.ignorar
+[ch4z@asus ex05]$
+
+ele retornou o arquivo teste.ignorar, com a extensao .ignorar, incluida no nosso .gitignore
+
+Para o nosso script, vamos usar o mesmo comando.
+Criando o script com touch, utilizando o comando: touch git_ignore.sh
+
+vou abrir o git_ignore.sh no explorer do codeos e inserir o codigo:
+
+#!/bin/sh
+git check-ignore *
+
+(#!/bin/sh indica que vai ser executado com sh)
+
+agora salvo o arquivo e executo o comando: bash git_ignore.sh | cat -e
+
+[ch4z@asus ex05]$ bash git_ignore.sh | cat -e
+teste.ignorar$
+[ch4z@asus ex05]$ 
+
+e o resultado foi a lista de arquivos ignorados. 
+
+
+
+
+
+
