@@ -52,3 +52,7 @@ resultado
 Compactando arquivo
 
 tar -cf testShell00.tar testShell00
+
+
+
+https://man7.org/linux/man-pages/man1/touch.1.html
