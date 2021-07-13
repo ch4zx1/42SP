@@ -1,0 +1,50 @@
+Nesse exercicio precisamos listar nossos commits, mas limitar a 5
+A documentacao do git log tem tudo que precisamos:
+(https://git-scm.com/docs/git-log)
+
+O git-log e utilizado para mostrar o log dos commits feitos.
+
+Usaremos o seguinte comando, seguido pelos seguintes argumentos:
+
+git log --format='%H' -n5
+
+onde: 
+
+--format = imprime o conteudo dos logs de um determinado formato
+%H = o formato escolhido, no caso commit hash
+-n5 = limita a 5 commits 
+
+rodando da seguinte forma (git log --format='%H')
+ele vai imprimir todos os commits feitos
+
+resultado:
+4256e64872423fd87848b0535af39baeeee68900
+864a46817254b6cb9c1794bd26712ca29c9edde1
+f417e4baa86b798bf9de4f4094899faeab54b275
+7ca31a2194680d04595951103ddea322c7d1099c
+cd4ca5cc200e62bbb22c1a95e62fef308e5454f6
+6392aa3a0ecbfb82a944aaf0295a6e7270edbdd7
+fd88d0989039fe229086bced47093851a3bee068
+a3a6aed3bc624b6d06c1740c137e5e91fc0c337a
+
+mas usando o argumento -n5, vamos limitar a apenas 5 e vamos obter
+o seguinte resultado:
+
+4256e64872423fd87848b0535af39baeeee68900
+864a46817254b6cb9c1794bd26712ca29c9edde1
+f417e4baa86b798bf9de4f4094899faeab54b275
+7ca31a2194680d04595951103ddea322c7d1099c
+cd4ca5cc200e62bbb22c1a95e62fef308e5454f6
+
+-----------------------------------------------------------------------------
+
+agora rodando o arquivo .sh, vamos obter o seguinte resultado: 
+
+[ch4z@asus ex04]$ bash git_commit.sh | cat -e
+4256e64872423fd87848b0535af39baeeee68900$
+864a46817254b6cb9c1794bd26712ca29c9edde1$
+f417e4baa86b798bf9de4f4094899faeab54b275$
+7ca31a2194680d04595951103ddea322c7d1099c$
+cd4ca5cc200e62bbb22c1a95e62fef308e5454f6$
+
+-----------------------------------------------------------------------------
