@@ -1,0 +1,44 @@
+Lendo a documentacao do ls encontraremos os argumentos necessarios.
+(https://man7.org/linux/man-pages/man1/ls.1.html)
+
+precisamos organizar da seguinte forma: 
+- Separar por virgula
+- Ordenar por data de acesso
+- Pasta sejam seguidas por uma barra
+(sem arquivos ocultos, nem .. ou .)
+
+para isso usaremos o comando com os seguintes argumentos
+ls -u -m -p
+
+ls - lista diretorios e conteudo
+
+argumentos 
+
+-u = com -lt: classifica e exibe o tempo de acesso; com -l: mostra tempo de 
+acesso e classificação por nome; caso contrário: classificar por acesso 
+tempo, mais novo primeiro. 
+Usaremos o argumento sem acompanhamento, como so queremos organizar por
+acesso de tempo.
+
+-m = preencha a largura com uma lista de entradas separadas por vírgulas
+
+-p = anexar / indicador aos diretórios
+
+-----------------------------------------------------------------------------
+
+logo com "ls -u -m -p" teremos a seguinte saida:
+
+ex03.txt, midLS
+
+se voltarmos para a pasta anterior, rodando o comando, teremos a seguinte 
+saida:
+
+ex03/, ex08/, ex07/, ex06/, ex05/, ex04/, ex02/, ex01/, ex00/
+
+criando um arquivo para teste, teremos a seguinte saida:
+
+teste, ex03/, ex08/, ex07/, ex06/, ex05/, ex04/, ex02/, ex01/, ex00/
+
+-----------------------------------------------------------------------------
+
+
