@@ -1,0 +1,11 @@
+cat < z 
+
+explicando:
+cat contacta um arquivo e imprime
+maior que (<) insere no arquivo 
+z - arquivo 
+
+cat retorna o que vai ser inserido.
+
+Links uteis
+https://man7.org/linux/man-pages/man1/cat.1.html
