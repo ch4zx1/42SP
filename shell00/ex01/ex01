@@ -1,0 +1,52 @@
+testShell00
+
+modificando metadata do arquivo 
+
+ordem: 
+permissao - hardlinks - usuario - grupo - tamanho - data - nome do arquivo
+
+-rw-r--r-- 1 ch4z ch4z 0 jul  13 10:54 testShell00
+
+------------------------------------------------------------------------
+
+adicionando tamanho sem adicionar texto ao arquivo usando truncade
+truncate -s 40 testShell00
+-s define o tamanho, no caso 40, no arquivo testShell00
+
+resultado
+-rw-r--r-- 1 ch4z ch4z 40 jul  13 10:54 testShell00
+
+-------------------------------------------------------------------------
+
+mudando a metadata 
+touch -t 
+-t define o timestamp do arquivo na seguinte ordem (CCYY MM DD HH MM) 
+touch -t 202106012342 testShell00
+
+resultado
+-rw-r--r-- 1 ch4z ch4z 40 jun  1 23:42 testShell00
+
+-------------------------------------------------------------------------
+
+mudando permissoes com chmod
+
+chmod define as permissoes de um arquivo para usuario, grupo e outros.
+
+
+R - Read | W - Write | X - Execution 
+R = 4, W = 2, X + 1
+a soma dos fatores define a permissao.
+
+atual 
+-rw-r--r-- (644)
+pedido 
+-r--r-xr-x (455)
+
+chmod 455 testShell00
+
+resultado
+-r--r-xr-x 1 ch4z ch4z 40 jun  1 23:42 testShell00
+
+--------------------------------------------------------
+
+Compactando arquivo
