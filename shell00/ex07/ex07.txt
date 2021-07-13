@@ -1,0 +1,41 @@
+Nesse exercicio teremos que criar um arquivo clean que vai procurar, a
+partir da pasta atual e dentro de todas as suas subpastas, os arquivos 
+cujos nomes terminam com ~, ou comecem e terminem com #.
+
+Utilizaremos o find para isso. (https://man7.org/linux/man-pages/man1/find.1.html)
+
+O comando que iremos utilizar e o seguinte: find . -name "*~" -print -delete -o -name "#*#" -print -delete
+
+Onde: 
+Find = procura arquivos em uma hierarquia de diretórios
+. = indica diretorio atual e subpastas
+-name = indica o arquivo que estamos procurando, no caso, utilizaremos * e o prefixo do arquivo, no caso *~ e #*#
+que indica todo arquivo iniciado por ~ ou iniciado e terminado por #.
+-print = mostra o nome do arquivo na saida
+-delete = deleta o arquivo
+-o = or, traducao direta "ou" basicamente diz um "ou" outro.
+
+agora vamos criar arquivos terminando com ~ ou comecando e terminando com #. 
+touch test~
+touch \#test#
+
+com o comando ls, veremos a presencao de dois novos arquivos, 
+#test# e test~, que seguem o padrao necessario.
+
+[ch4z@asus ex07]$ ls
+ clean   ex07.txt  '#test#'   test~
+[ch4z@asus ex07]$ 
+
+rodando o comando clean (find . -name "*~" -print -delete -o -name "#*#" -print -delete)
+teremos a seguinte saida: 
+
+[ch4z@asus ex07]$ find . -name "*~" -print -delete -o -name "#*#" -print -delete
+./#test#
+./test~
+[ch4z@asus ex07]$ 
+
+agora dando o comando ls, veremos que os arquivos sumiram.
+
+[ch4z@asus ex07]$ ls
+clean  ex07.txt
+[ch4z@asus ex07]$ 
