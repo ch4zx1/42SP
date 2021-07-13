@@ -1,0 +1,84 @@
+vamos modificar da mesma forma, igual foi feito no exercicio 1
+
+a diferenca apenas sao:
+- diretorios sao criados com mkdir ao inves de touch (permissoes comecadas em d)
+- test6 faz um symbolic hard link com test0
+- test3 faz um hard link com test5
+- usaremos -h com links simbolicos para nao alterar o arquivo linkado
+-----------------------------------------------------------------------
+
+modificando metadata do arquivo 
+
+ordem: 
+permissao - hardlinks - usuario - grupo - tamanho - data - nome do arquivo
+
+drwxr-xr-x 2 ch4z ch4z 4096 jul 13 11:10 test0
+-rw-r--r-- 1 ch4z ch4z    0 jul 13 11:10 test1
+drwxr-xr-x 2 ch4z ch4z 4096 jul 13 11:10 test2
+-rw-r--r-- 2 ch4z ch4z    0 jul 13 11:10 test3
+-rw-r--r-- 1 ch4z ch4z    0 jul 13 11:10 test4
+-rw-r--r-- 2 ch4z ch4z    0 jul 13 11:10 test5
+lrwxrwxrwx 1 ch4z ch4z    5 jul 13 11:11 test6 -> test0
+
+com mkdir criamos test0 e test1 (ex: mkdir test0)
+com ln criamos hard links (ex: ln -argumento arquivo link)
+como ha dois tipos de hardlink, usaremos -s para hardlinks simbolicos)
+
+ln -s test0 test6 (hardlink simbolico entre 0 e 6)
+ln test3 test5 (hardlink absoluto entre 3 e 5)
+
+resultado sera o apresentado acima.
+
+------------------------------------------------------------------
+
+agora vamos utilizar o mesmo metodo do ex01
+modificando o arquivo 0,1,2,3,4 e 6
+nao e necessario alterar o 5, pois temos um hardlink absoluto entre eles.
+
+primeiramente utilizaremos o truncate para adicionar tamanho aos arquivos necessarios.
+truncate -s tamanho arquivo (ex: truncade -s 40 testShell00)
+
+logo depois modificaremos a metadada dos arquivos
+
+touch -t YYYYMMDDHHHH arquivo (ex:touch -t 202106012233 testShell00)
+
+nao e necessario alterar o 5, pois temos um hardlink absoluto entre eles.
+
+no test6, utilizaremos o -h que impede modificacoes no arquivo referencia.
+
+touch -h -t YYYYMMDDHHHH test6 
+
+resultado
+drwxr-xr-x 2 ch4z ch4z 4096 jun  1 20:47 test0
+-rw-r--r-- 1 ch4z ch4z    4 jun  1 21:46 test1
+drwxr-xr-x 2 ch4z ch4z 4096 jun  1 22:45 test2
+-rw-r--r-- 2 ch4z ch4z    1 jun  1 23:44 test3
+-rw-r--r-- 1 ch4z ch4z    2 jun  1 23:43 test4
+-rw-r--r-- 2 ch4z ch4z    1 jun  1 23:44 test5
+lrwxrwxrwx 1 ch4z ch4z    5 jun  1 22:20 test6 -> test0
+
+-----------------------------------------------------------------------------
+
+agora e so aplicar o chmod, mesmo do exercicio 2
+chmod xxx arquvivo (ex: chmod 777 teste)
+
+resultado
+drwxr-xr-x 2 ch4z ch4z 4096 jun  1 20:47 test0
+-rwx--xr-- 1 ch4z ch4z    4 jun  1 21:46 test1
+dr-x---r-- 2 ch4z ch4z 4096 jun  1 22:45 test2
+-r-----r-- 2 ch4z ch4z    1 jun  1 23:44 test3
+-rw-r----x 1 ch4z ch4z    2 jun  1 23:43 test4
+-r-----r-- 2 ch4z ch4z    1 jun  1 23:44 test5
+lrwxrwxrwx 1 ch4z ch4z    5 jun  1 22:20 test6 -> test0
+
+-----------------------------------------------------------------
+
+agora vamos compactar novamente 
+
+tar -cf exo2.tar *
+
+-----------------------------------------------------------------
+
+Caso de duvida, consulte o arquivo ex01
+
+https://github.com/ch4zx1/42SP/blob/master/shell00/ex01/ex01
