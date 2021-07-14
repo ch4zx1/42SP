@@ -1,0 +1,41 @@
+Nesse exercicio, vamos precisar escrever uma linha de comando que 
+procure na pasta atual e em todas as subpastas todos os arquivos 
+cujos nomes terminam com ".sh"(sem as aspas) e que só exiba os
+seus nomes, sem o .sh.
+
+As seguintes documentacoes serao uteis:
+(find - https://linux.die.net/man/1/file)
+(xargs - https://man7.org/linux/man-pages/man1/xargs.1.html)
+(basename - https://man7.org/linux/man-pages/man1/basename.1.html)
+
+
+Usando o comando: 
+
+find . -name "*.sh" | xargs basename -s .sh
+
+Onde:
+find = determina o tipo de arquivo 
+. = indica o diretorio atual e subdiretorios
+-name = indica que estamos procurando arquivos .sh
+
+logo rodando o comando, sem a segunda parte, temos esse resultado 
+
+[ch4z@asus ex02]$ bash find_sh.sh | cat -e
+./teste/dsads.sh$
+./find_sh.sh$
+[ch4z@asus ex02]$ 
+
+ele nos mostra os arquivos com final .sh, mas precisamos mostrar apenas
+o nome, sem sufixo, logo entra a segunda parte do comando.
+Onde: 
+xargs = constrói e executa linhas de comando a partir da entrada padrão
+basename -s = tira o diretório e o sufixo dos nomes de arquivos
+.sh = sufixo a remover 
+
+logo rodando o comando, temos o seguinte resultado:
+
+[ch4z@asus ex02]$ bash find_sh.sh | cat -e
+find_sh$
+[ch4z@asus ex02]$ 
+
+
