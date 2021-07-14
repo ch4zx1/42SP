@@ -22,6 +22,6 @@ Veremos que o arquivo foi criado corretamente:
 [ch4z@asus ex05]$ ls -lRa *MaRV* | cat -e
 -rw-r--r-- 1 ch4z ch4z 0 jul 14 15:25 "\?$*'MaRViN'*$?\"$
 
-
+Agora, podemos abrir o arquivo pelo CodeOS e inserir "42" dentro.
 
 
