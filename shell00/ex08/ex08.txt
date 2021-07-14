@@ -11,7 +11,7 @@ onde:
 41 - offset, indica de onde vai comecar a ser testado
 string - indica o que vamos testar, no caso uma string 
 42 File - o tipo de arquivo, no caso .42
-containing "42" - verifica se o arquivo contem 42
+containing "42" - informa se o arquivo contem 42
 
 -------------------------------------------------------------
 
