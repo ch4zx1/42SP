@@ -1,0 +1,39 @@
+Nesse exercicio precisamos criar um arquivo magic, que
+detecta arquivos do tipo 42 e a string 42 no 42 byte
+
+A documentacao do file vai ser util
+(https://linux.die.net/man/1/file)
+
+a configuracao do arquivo sera a seguinte:
+41 string 42 42 file
+
+onde:
+41 - offset
+string - sequencia de caracteres
+42 - o que tem na sequencia
+42 file - retorno
+
+-------------------------------------------------------------
+
+Testando :)
+
+Vou criar dois arquivos, um com texto aleatorio e outro com 41 espacos ate o texto 42.
+Criei o arquivo e teste.42, contendo 41 espacos e o texto 42 e o teste2.42 com apenas letras aleatorias.
+
+Vamos usar o seguinte comando: file -m ft_magic *.42
+Onde: 
+File = Determina o tipo de arquivo 
+-m = debug do arquivo magic antes de compilar
+ft_magic = nosso arquivo
+*.42 = vai exibir todos arquivos com prefixo .42
+
+Resultado: 
+
+[ch4z@asus ex08]$ file -m ft_magic *.42
+teste2.42: ASCII text, with no line terminators
+teste.42:  42 file
+[ch4z@asus ex08]$ 
+
+No arquivo teste2.42, tem apenas texto, mas nenhuma string correspondente.
+Ja no arquivo teste.42, ele identifica que o arquivo contem a string 42 no byte 42.
+
