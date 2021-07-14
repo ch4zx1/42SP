@@ -50,32 +50,56 @@ se tudo ocorreu bem, o resultado vai ser esse:
 agora vamos adicionar o .gitignore ao nosso repositorio remoto com o comando:
 git add .gitignore
 
-voltando para a pasta ex05, vou criar um teste.ignorar com touch:
+Vou criar um teste.ignorar com touch:
 touch teste.ignorar
 
-conferindo se o arquivo foi criado com ls
+E tambem vou criar um arquivo oculto, com touch
+touch \.teste2.ignorar
 
-[ch4z@asus ex05]$ ls
-ex05.txt  git_ignore.sh  teste.ignorar
+conferindo se o arquivo foi criado com ls -la 
+
+[ch4z@asus shell00]$ ls -la
+total 48
+drwxr-xr-x 11 ch4z ch4z 4096 jul 14 08:49 .
+drwxr-xr-x  4 ch4z ch4z 4096 jul 14 08:17 ..
+drwxr-xr-x  2 ch4z ch4z 4096 jul 13 11:57 ex00
+drwxr-xr-x  2 ch4z ch4z 4096 jul 13 11:57 ex01
+drwxr-xr-x  4 ch4z ch4z 4096 jul 13 11:57 ex02
+drwxr-xr-x  2 ch4z ch4z 4096 jul 13 12:00 ex03
+drwxr-xr-x  2 ch4z ch4z 4096 jul 13 12:16 ex04
+drwxr-xr-x  2 ch4z ch4z 4096 jul 13 15:38 ex05
+drwxr-xr-x  2 ch4z ch4z 4096 jul 13 12:51 ex06
+drwxr-xr-x  2 ch4z ch4z 4096 jul 13 13:33 ex07
+drwxr-xr-x  2 ch4z ch4z 4096 jul 14 08:12 ex08
+-rw-r--r--  1 ch4z ch4z    9 jul 13 15:34 .gitignore
+-rw-r--r--  1 ch4z ch4z    0 jul 14 08:49 .teste2.ignorar
+-rw-r--r--  1 ch4z ch4z    0 jul 14 08:49 teste.ignorar
+[ch4z@asus shell00]$ 
+
+Nosso dois arquivos criados estao presentes :)
 
 --------------------------------------------------------------------------------------
 
-para criar o nosso script, a documentacao do git check-ignore vai ser util.
-(https://git-scm.com/docs/git-check-ignore)
+para criar o nosso script, a documentacao do ls-files vai ser util.
+(https://git-scm.com/docs/git-ls-files)
 
-esse comando e bem basico, para verificar os arquivos ignorados, basta rodar o seguinte comando: 
-git check-ignore * 
+Para verificar os arquivos ignorados, basta rodar o seguinte comando: 
+git ls-files -i -o --exclude-standard
 
 onde:
-check-ignore = verifica se o arquivo esta incluido no .gitignore e exibe o caminho caso for verdadeiro.
-* = verifica o diretorio atual. 
+ls-files = Mostra informações sobre os arquivos
+-i = Mostra apenas arquivos ignorados na saída.
+-o = Mostra outros arquivos, no caso, os ocultos.
+--exclude-standard = Adiciona as exclusões Git padrão, .gitignore em cada diretório e o arquivo de exclusão global do usuário.
 
 rodando esse comando, vamos ter o seguinte resultado:
-[ch4z@asus ex05]$ git check-ignore *
-teste.ignorar
-[ch4z@asus ex05]$
 
-ele retornou o arquivo teste.ignorar, com a extensao .ignorar, incluida no nosso .gitignore
+[ch4z@asus shell00]$ git ls-files -i -o --exclude-standard
+.teste2.ignorar
+ex05/teste.ignorar
+teste.ignorar
+
+ele retornou o arquivo teste.ignorar e o arquivo .teste2.ignorar que esta oculto, com a extensao .ignorar, incluida no nosso .gitignore
 
 Para o nosso script, vamos usar o mesmo comando.
 Criando o script com touch, utilizando o comando: touch git_ignore.sh
@@ -83,15 +107,17 @@ Criando o script com touch, utilizando o comando: touch git_ignore.sh
 vou abrir o git_ignore.sh no explorer do codeos e inserir o codigo:
 
 #!/bin/sh
-git check-ignore *
+git ls-files -i -o --exclude-standard
 
 (#!/bin/sh indica que vai ser executado com sh)
 
 agora salvo o arquivo e executo o comando: bash git_ignore.sh | cat -e
 
-[ch4z@asus ex05]$ bash git_ignore.sh | cat -e
+[ch4z@asus shell00]$ bash git_ignore.sh | cat -e
+.teste2.ignorar$
+ex05/teste.ignorar$
 teste.ignorar$
-[ch4z@asus ex05]$ 
+[ch4z@asus shell00]$ 
 
 e o resultado foi a lista de arquivos ignorados. 
 
