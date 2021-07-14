@@ -5,13 +5,13 @@ A documentacao do file vai ser util
 (https://linux.die.net/man/1/file)
 
 a configuracao do arquivo sera a seguinte:
-41 string 42 File containing "42"
+41 string 42 42 file
 
 onde:
-41 - offset, indica de onde vai comecar a ser testado
-string - indica o que vamos testar, no caso uma string 
-42 File - o tipo de arquivo, no caso .42
-containing "42" - informa se o arquivo contem 42
+41 - offset
+string - sequencia de caracteres
+42 - o que tem na sequencia
+42 file - retorno
 
 -------------------------------------------------------------
 
@@ -31,7 +31,7 @@ Resultado:
 
 [ch4z@asus ex08]$ file -m ft_magic *.42
 teste2.42: ASCII text, with no line terminators
-teste.42:  File containing "42"
+teste.42:  42 file
 [ch4z@asus ex08]$ 
 
 No arquivo teste2.42, tem apenas texto, mas nenhuma string correspondente.
