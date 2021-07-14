@@ -1,0 +1,27 @@
+Nesse exercicio vamos escrever uma linha de comando que exiba um ls -l uma linha a cada duas (linha
+sim, linha não), a partir da primeira.
+
+A documentacao do sed vai ser util.
+(Sed - https://linux.die.net/man/1/sed)
+
+Para isso, vamos usar o seguinte comando:
+
+ls -l | sed -n 'p;n'
+
+Onde:
+ls -l = imprime os arquivos e diretirios com suas caracteristicas
+sed = filtra e transforma o texto
+sed -n = suprime todas as saídas que não são impressas explicitamente.
+'p;n' = é o script sed a ser executado em cada linha de entrada. O ponto-e-vírgula é um separador entre dois comandos p e n.
+p = imprime a linha atual, sem mover para a próxima linha.
+n = passa para a próxima linha sem imprimir nada.
+
+Logo, esse comando tera o seguinte resultado:
+
+[ch4z@asus shell01]$ ls -l | sed -n 'p;n'
+total 32
+drwxr-xr-x 2 ch4z ch4z 4096 jul 14 14:04 ex02
+drwxr-xr-x 2 ch4z ch4z 4096 jul 14 14:23 ex04
+drwxr-xr-x 2 ch4z ch4z 4096 jul 14 16:11 ex06
+drwxr-xr-x 2 ch4z ch4z 4096 jul 14 13:31 ex08
+[ch4z@asus shell01]$ 
