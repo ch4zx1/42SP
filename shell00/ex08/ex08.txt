@@ -14,7 +14,7 @@ string - sequencia de caracteres
 42 file - retorno
 
 -------------------------------------------------------------
-
+ 
 Testando :)
 
 Vou criar dois arquivos, um com texto aleatorio e outro com 41 espacos ate o texto 42.
