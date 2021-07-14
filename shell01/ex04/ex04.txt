@@ -1,0 +1,91 @@
+Nesse exercicio, vamos escrever uma linha de comando que 
+mostre os endereços MAC de sua máquina, respeitando
+o exibido no pdf.
+
+A documentacao do ifconfig, grep e awk vao ser uteis.
+(ifconfig - https://man7.org/linux/man-pages/man8/ifconfig.8.html)
+(grep - https://linux.die.net/man/1/grep)
+(awk - )
+
+Vamos usar o comando abaixo:
+
+ifconfig | grep ether | awk '{ print $2 }'
+
+Vamos dividir em tres passos
+
+Onde: 
+ifconfig = msotra as interfaces de rede 
+
+Logo, rodando ifconfig vai nos apresentar o seguinte resultado:
+
+dummy0: flags=195<UP,BROADCAST,RUNNING,NOARP>  mtu 1500
+        ether da:2f:8a:d4:71:f5  txqueuelen 1000  (Ethernet)
+        RX packets 0  bytes 0 (0.0 B)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 0  bytes 0 (0.0 B)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+dummy1: flags=195<UP,BROADCAST,RUNNING,NOARP>  mtu 1500
+        ether 32:fd:1b:18:bb:7e  txqueuelen 1000  (Ethernet)
+        RX packets 0  bytes 0 (0.0 B)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 0  bytes 0 (0.0 B)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+dummy2: flags=195<UP,BROADCAST,RUNNING,NOARP>  mtu 1500
+        ether ce:f1:70:cd:46:78  txqueuelen 1000  (Ethernet)
+        RX packets 0  bytes 0 (0.0 B)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 0  bytes 0 (0.0 B)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+dummy3: flags=195<UP,BROADCAST,RUNNING,NOARP>  mtu 1500
+        ether 72:96:67:eb:e8:f3  txqueuelen 1000  (Ethernet)
+        RX packets 0  bytes 0 (0.0 B)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 0  bytes 0 (0.0 B)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+eth0: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
+        inet 10.3.60.10  netmask 255.255.255.0  broadcast 10.3.60.255
+        ether 02:42:0a:03:3c:0a  txqueuelen 0  (Ethernet)
+        RX packets 67329  bytes 28023190 (26.7 MiB)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 59381  bytes 27744066 (26.4 MiB)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+
+cfischer@basecamp:~$ 
+
+Precisamos exibir apenas o MAC, que esta localizado no ether.
+Onde:
+grep - imprime linhas que correspondem a um padrão
+
+Logo: ifconfig | grep ether
+Vai nos entregar o seguinte resultado: 
+
+cfischer@basecamp:~$ ifconfig | grep ether
+ether da:2f:8a:d4:71:f5  txqueuelen 1000  (Ethernet)
+ether 32:fd:1b:18:bb:7e  txqueuelen 1000  (Ethernet)
+ether ce:f1:70:cd:46:78  txqueuelen 1000  (Ethernet)
+ether 72:96:67:eb:e8:f3  txqueuelen 1000  (Ethernet)
+ether 02:42:0a:03:3c:0a  txqueuelen 0  (Ethernet)
+
+Precisamos exibir APENAS o MAC, para isso vamos usar o comando:
+awk '{ print $2 }'
+
+Onde: 
+awk - escaneia um padrao e imprime
+print $2 - imprime o segundo campo no registro de entrada.
+
+Logo, se rodarmos o comando completo, teremos o seguinte resultado:
+
+cfischer@basecamp:~$ ifconfig | grep ether | awk '{ print $2 }'
+da:2f:8a:d4:71:f5
+32:fd:1b:18:bb:7e
+ce:f1:70:cd:46:78
+72:96:67:eb:e8:f3
+02:42:0a:03:3c:0a
+cfischer@basecamp:~$ 
+
+Agora a saida imprime apenas o MAC.
