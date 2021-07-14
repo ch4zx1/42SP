@@ -1,0 +1,48 @@
+Nesse exercicio, vamos escrever uma linha de comando que mostre o 
+número de arquivos regulares e de pastas dentro da pasta atual e 
+todas as suas subpastas, incluindo o "."da pasta inicial.
+
+A documentacao do find e wc vao ser uteis
+(find - https://man7.org/linux/man-pages/man1/find.1.html)
+(wc - https://linux.die.net/man/1/wc)
+
+Usaremos o seguinte comando:
+find -type d,f | wc -l
+
+Onde:
+find = pesquisa por arquivos em uma hierarquia de diretórios
+-type = indica o tipo de arquivo.
+d,f = indica para o type, que os arquivos sao diretorios e arquivo regular.
+
+Rodando a primeira parte do comando, temos o seguinte resultado:
+[ch4z@asus shell01]$ find -type d,f
+.
+./ex08
+./ex07
+./ex01
+./ex01/print_groups.sh
+./ex01/ex01.txt
+./ex02
+./ex02/find_sh.sh
+./ex02/ex02.txt
+./ex05
+./ex03
+./ex03/ex03.txt
+./ex03/count_files.sh
+./ex06
+./ex04
+[ch4z@asus shell01]$
+
+Logo, precisamos apenas mostrar apenas a quantidade de
+arquivos e pastas, para isso vamos usar o restante do comando.
+
+Onde:
+wc -l = imprimir as contagens de nova linha.
+
+logo =
+
+[ch4z@asus shell01]$ find -type d,f | wc -l
+15
+[ch4z@asus shell01]$ 
+
+ele mostra apenas quantas linhas foram impressas.
