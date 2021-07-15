@@ -4,11 +4,12 @@ cujos nomes terminam com ~, ou comecem e terminem com #.
 
 Utilizaremos o find para isso. (https://man7.org/linux/man-pages/man1/find.1.html)
 
-O comando que iremos utilizar e o seguinte: find . -name "*~" -print -delete -o -name "#*#" -print -delete
+O comando que iremos utilizar e o seguinte: find . -type f \( -name "*~" -o -name "#*#" \) -print -delete
 
 Onde: 
 Find = procura arquivos em uma hierarquia de diretórios
 . = indica diretorio atual e subpastas
+-type f = indica o tipo de arquivo, onde f indica arquivos. 
 -name = indica o arquivo que estamos procurando, no caso, utilizaremos * e o prefixo do arquivo, no caso *~ e #*#
 que indica todo arquivo iniciado por ~ ou iniciado e terminado por #.
 -print = mostra o nome do arquivo na saida
@@ -26,10 +27,10 @@ com o comando ls, veremos a presencao de dois novos arquivos,
  clean   ex07.txt  '#test#'   test~
 [ch4z@asus ex07]$ 
 
-rodando o comando clean (find . -name "*~" -print -delete -o -name "#*#" -print -delete)
+rodando o comando clean (find . -type f \( -name "*~" -o -name "#*#" \) -print -delete)
 teremos a seguinte saida: 
 
-[ch4z@asus ex07]$ find . -name "*~" -print -delete -o -name "#*#" -print -delete
+[ch4z@asus ex07]$ find . -type f \( -name "*~" -o -name "#*#" \) -print -delete
 ./#test#
 ./test~
 [ch4z@asus ex07]$ 
