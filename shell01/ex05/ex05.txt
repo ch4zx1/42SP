@@ -23,27 +23,3 @@ Veremos que o arquivo foi criado corretamente:
 -rw-r--r-- 1 ch4z ch4z 0 jul 14 15:25 "\?$*'MaRViN'*$?\"$
 
 Agora, podemos abrir o arquivo pelo CodeOS e inserir 42 dentro.
-
-----------------------------------------------------------------------
-
-Mais uma pegadinha :) 
-
-Depois do arquivo criado, coloquei "42" dentro como solicitado, mas repare na saida de arquivo: 
-
-[ch4z@asus ex05]$ ls -lRa *MaRV* | cat -e
--rw-r--r-- 1 ch4z ch4z 4 jul 14 23:23 "\?$*'MaRViN'*$?\"$
-
-Temos 4 bytes, e no exemplo, mostra o seguinte retorno: 
-
-$>ls -lRa *MaRV* | cat -e
--rw---xr-- 1 75355 32015 2 Oct 2 12:21 "\?$*'MaRViN'*$?\"$
-$>
-
-Note que na verdade, no exemplo, temos apenas 2 bytes. 
-
-Logo, deixando apenas 42 dentro do arquivo, temos o seguinte retorno: 
-
-[ch4z@asus ex05]$ ls -lRa *MaRV* | cat -e
--rw-r--r-- 1 ch4z ch4z 2 jul 14 23:23 "\?$*'MaRViN'*$?\"$
-
-Agora sim, temos o retorno correto :)
