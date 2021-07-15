@@ -1,0 +1,49 @@
+Nesse exercicio, precisamos criar um arquivo chamado "\?$*’MaRViN’*$?\"
+Parece facil, nao? 
+O maior problema e que o shell interpreta os caracteres especiais, logo, 
+criando com touch apenas copiando, teremos o seguinte resultado: 
+
+touch "\?$*’MaRViN’*$?\"
+> 
+
+Alem do arquivo nao ser criado, ainda aguarda a entrada de outros argumentos,
+para isso, vamos precisar separas os caracteres especiais interpretados pelo
+bash com "\" logo o nome do arquivo sera o seguinte:
+
+\"\\\?\$\*\'MaRViN\'\*\$\?\\\"
+
+Agora o comando retorna uma nova linha: 
+[ch4z@asus ex05]$ touch \"\\\?\$\*\'MaRViN\'\*\$\?\\\"
+[ch4z@asus ex05]$ 
+
+Se requisitarmos: ls -lRa *MaRV* | cat -e
+Veremos que o arquivo foi criado corretamente:
+
+[ch4z@asus ex05]$ ls -lRa *MaRV* | cat -e
+-rw-r--r-- 1 ch4z ch4z 0 jul 14 15:25 "\?$*'MaRViN'*$?\"$
+
+Agora, podemos abrir o arquivo pelo CodeOS e inserir 42 dentro.
+
+----------------------------------------------------------------------
+
+Mais uma pegadinha :) 
+
+Depois do arquivo criado, coloquei "42" dentro como solicitado, mas repare na saida de arquivo: 
+
+[ch4z@asus ex05]$ ls -lRa *MaRV* | cat -e
+-rw-r--r-- 1 ch4z ch4z 4 jul 14 23:23 "\?$*'MaRViN'*$?\"$
+
+Temos 4 bytes, e no exemplo, mostra o seguinte retorno: 
+
+$>ls -lRa *MaRV* | cat -e
+-rw---xr-- 1 75355 32015 2 Oct 2 12:21 "\?$*'MaRViN'*$?\"$
+$>
+
+Note que na verdade, no exemplo, temos apenas 2 bytes. 
+
+Logo, deixando apenas 42 dentro do arquivo, temos o seguinte retorno: 
+
+[ch4z@asus ex05]$ ls -lRa *MaRV* | cat -e
+-rw-r--r-- 1 ch4z ch4z 2 jul 14 23:23 "\?$*'MaRViN'*$?\"$
+
+Agora sim, temos o retorno correto :)
