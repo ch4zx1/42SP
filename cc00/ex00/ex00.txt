@@ -1,0 +1,70 @@
+Documentacoes uteis:
+(unistd: https://pubs.opengroup.org/onlinepubs/7908799/xsh/unistd.h.html)
+(Write: http://codewiki.wikidot.com/c:system-calls:write)
+
+
+Nesse exercicio, vamos escrever uma função que mostre o caractere passado como parâmetro.
+Ela deve ser prototipada da seguinte maneira:
+void ft_putchar(char c);
+Para indicar o caractere, você deve usar a função write da seguinte maneira.
+write(1, &c, 1);
+
+Logo, vamos escrever a seguinte funcao.
+
+void	ft_putchar(char c)
+{
+	write(1, &c, 1);
+} 
+
+Onde void, significa que e uma funcao vazia, ft_putchar o nome da nossa funcao, char significa character, e c indica se usarmos c
+dentro da funcao, ela signifca que e um char.
+
+Dentro dessa funcao, teremos write(1, &c, 1)
+Onde:
+write - funcao que grava dados em um buffer
+1 - signifca o que queremos gravar, 0 - a entrada, 1 - a saida, 2 - um erro.
+&c - o buffer
+1 - a quantidade de bytes alocadas para exibir esse buffer, logo 1 caracter = 1 byte
+
+Agora vamos testar com a nossa funcao main:
+
+int	main(void)
+{
+	char	pao;
+
+	pao = 'a';
+	ft_putchar(pao);
+	return (0);
+}
+
+int - significa inteiro, como a funcao main apenas retorna 0 ou 1, ela usa int.
+main - nome da funcao
+void - indica que a funcao e vazia, como o main apenas chama a funcao ft_putchar e ela e quem retorna.
+
+Dentro dessa funcao, ha as seguintes variaveis:
+
+char	pao;
+
+pao = 'a';
+ft_putchar(pao);
+return (0);
+
+Onde:
+
+char	pao; - indica que a variavel pao e do tipo char
+pao = 'a'; - indica que o retorno da variavel pao e 'a'
+ft_putchar(pao) - chama a funcao ft_putchar, usando o parametro (pao), que indica a varial pao.
+return (0); - caso ocorra tudo bem, retornara 0. 
+
+Nosso codigo esta completo, logo, precisamos compilar ele: gcc -Wall -Wextra -Werror ft_putchar.c
+Usando o comando ls, veremos que o arquivo a.out foi criado:
+[ch4z@asus ex00]$ ls
+a.out  ft_putchar.c
+[ch4z@asus ex00]$ 
+
+Logo, se executarmos ele, teremos a seguinte saida:
+
+[ch4z@asus ex00]$ ./a.out
+a[ch4z@asus ex00]$
+
+Imprimiu a, que e o retorno da nossa variavel pao, logo, nosso codigo funcionou :)
