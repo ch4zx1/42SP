@@ -1,0 +1,53 @@
+Nesse exercicio, as coisas comecam a complicar, vamos escrever uma função que mostre, em ordem crescente, 
+todas as diferentes combinações de três números diferentes em ordem crescente - sim, a repetição é proposital.
+• Isso resulta em algo do tipo:
+$>./a.out | cat -e
+012, 013, 014, 015, 016, 017, 018, 019, 023, ..., 789$>
+• 987 fica de fora porque o 789 já está presente
+• 999 fica de fora porque esse número não tem exclusivamente números diferentes uns
+dos outros.
+
+Novamente vamos usar while e write, criando uma funcao para write, da seguinte forma:
+
+void	ft_writenum(char a, char b, char c)
+{
+	write(1, &a, 1);
+	write(1, &b, 1);
+	write(1, &c, 1);
+	if (! (a == '7' && b == '8' && c == '9' ))
+	{
+		write(1, ", ", 2);
+	}
+}
+
+Onde:
+A funcao ft_writenum leva 3 argumentos do tipo char a, b e c.
+dentro da funcao, vamos chamar um write pra cada char.
+e depois, vamos criar um write para a virgula, mas excluindo
+a virgula caso chegue em 789.
+
+
+
+void	ft_print_comb(void)
+{
+	char	d;
+	char	e;
+	char	f;
+
+	d = '0';
+	while (d <= '7')
+	{
+		e = d + 1;
+		while (e <= '8')
+		{
+			f = e + 1;
+			while (f <= '9')
+			{
+				ft_writenum(d, e, f);
+				f++;
+			}
+			e++;
+		}
+		d++;
+	}
+}
