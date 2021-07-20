@@ -1,0 +1,26 @@
+Nesse exercicio, vamos escrever uma função que mostre ’N’ ou ’P’ segundo o sinal do inteiro passado como
+parâmetro. Se n for negativo, indique ’N’. Se n for positivo ou nulo, indique ’P’.
+
+Para isso, vamos usar if e else, que sao estruturas de condicao.
+if / else - http://linguagemc.com.br/estruturas-de-decisao-encadeadas-if-else-if-else/
+
+Vamos precisar, de duas condicoes, para numeros negativos e positivos
+como no while, vamos indicar se o numero e maior ou menor que zero.
+
+Logo teremos o seguinte codigo:
+
+void    ft_is_negative(int n)
+{
+    if (n >= 0)
+    {
+        ft_putchar('P');
+    }
+    else if (n < 0)
+    {
+        ft_putchar('N');
+    }
+}
+
+Onde:
+if (n >= 0) - Se n for igual ou maior que 0, imprime 'P'.
+else if (n < 0) - Se n for menor que 0, imprime 'N'.
