@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putchar.c                                       :+:      :+:    :+:   */
+/*   ft_print_alphabet.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cfischer <cfischer@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/07/16 12:23:41 by cfischer          #+#    #+#             */
-/*   Updated: 2021/07/16 12:23:43 by cfischer         ###   ########.fr       */
+/*   Created: 2021/07/17 17:38:59 by cfischer          #+#    #+#             */
+/*   Updated: 2021/07/19 19:48:13 by cfischer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,20 @@ void	ft_putchar(char c)
 	write(1, &c, 1);
 }
 
-int	main(void)
+void	ft_print_alphabet(void)
 {
-	char	pao;
-	
-	pao = 'b';
-	ft_putchar(pao);
+	char	alphabet;
+
+	alphabet = 'a';
+	while (alphabet <= 'z')
+	{
+		ft_putchar(alphabet);
+		alphabet++;
+	}
+}
+
+int main (void)
+{
+	ft_print_alphabet();
 	return (0);
 }

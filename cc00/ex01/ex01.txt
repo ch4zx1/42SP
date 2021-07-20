@@ -1,0 +1,42 @@
+Nesse exercicio vamos escrever uma função que mostre o alfabeto em minúsculo em apenas uma linha, em
+ordem crescente, começando pela letra ’a’.
+
+Vamos utilizar o ft_putchar do primeiro exercicio para escrever a saida e o comando while para criar um loop.
+- Links importantes -
+Write - http://codewiki.wikidot.com/c:system-calls:write
+While - http://linguagemc.com.br/o-comando-while-em-c/
+
+While e uma estrutura de repeticao, onde, em determinada condicao, cria um loop.
+Logo, precisamos criar uma condicao para escrever o alfabeto de A a Z.
+Por mais que pareca complicado, entendendo como o while funciona, fica facil.
+
+O resultado da nossa funcao, ter ser parecido com isso:
+
+void	ft_print_alphabet(void)
+{
+	char	alphabet;
+
+	alphabet = 'a';
+	while (alphabet <= 'z')
+	{
+		ft_putchar(alphabet);
+		alphabet++;
+	}
+}
+
+Onde:
+char alphabet - indica que nossa variavel alphabet e do tipo char(character).
+alphabet - variavel, que vale 'a'.
+while(alphabet <= 'z') - condicao, onde se alphabet(a) for menor ou igual a z, executa.
+ft_putchar(alphabet) - imprime o resultado da variavel alphabet, atualmente a.
+alphabet++ - alphabet(a) + 1.
+
+Depois da execucao, o valor passa a ser b, logo, ele faz a verificacao novamente:
+Dessa vez, alphabet vale b, logo ele verifica se b e menor ou igual a z e executa.
+Esse loop se repete ate chegar em Z.
+
+Logo, teremos o seguinte resultado:
+
+[ch4z@asus ex01]$ gcc ft_print_alphabet.c 
+[ch4z@asus ex01]$ ./a.out
+abcdefghijklmnopqrstuvwxyz[ch4z@asus ex01]$ 

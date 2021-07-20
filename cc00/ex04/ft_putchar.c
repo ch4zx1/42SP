@@ -16,12 +16,3 @@ void	ft_putchar(char c)
 {
 	write(1, &c, 1);
 }
-
-int	main(void)
-{
-	char	pao;
-	
-	pao = 'b';
-	ft_putchar(pao);
-	return (0);
-}
