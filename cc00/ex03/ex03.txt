@@ -1,0 +1,31 @@
+Nesse exercicio, vamos escrever uma função que mostre todos os números em uma única linha em ordem
+crescente.
+
+Da mesma forma, vamos usar a logica do while:
+
+void	ft_print_numbers(void)
+{
+	int	n;
+
+	n = '0';
+	while (n <= '9')
+	{
+		write(1, &n, 1);
+		n++;
+	}
+}
+
+Onde: 
+int n - declava que a variavel n e um int(inteiro).
+n = '0' - indica que a variavel n vale 0.
+while (n <= '9') - caso n for menor ou igual a 0, executa.
+write(1, &n, 1) - escreve a saida da funcao, indica que o 
+buffer e n, e que vamos alocar 1 byte para escrever.
+(Caso voce nao entenda o write, a explicacao do ex00 pode ser util).
+n++ - n+1.
+
+Logo na execucao, teremos o seguinte resultado:
+
+[ch4z@asus ex03]$ gcc *c
+[ch4z@asus ex03]$ ./a.out
+0123456789[ch4z@asus ex03]$
