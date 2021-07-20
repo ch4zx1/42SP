@@ -1,0 +1,28 @@
+Nesse exercicio, vamos fazer algo parecido com a questao anterior:
+Escrever uma função que mostre o alfabeto em minúsculo em apenas uma linha, em
+ordem decrescente, começando pela letra ’z’.
+
+A explicacao do exercicio 1 se aplica aqui. 
+
+void	ft_print_reverse_alphabet(void)
+{
+	char	reva;
+
+	reva = 'z';
+	while (reva >= 'a')
+	{
+		ft_putchar(reva);
+		reva--;
+	}
+}
+
+logo, so vamos mudar a condicao do while:
+onde, reva vale z e a condicao e a seguinte:
+caso z for menor ou igual a a, executa.
+reva-- equivale a reva - 1.
+
+teremos o seguinte resultado:
+
+[ch4z@asus ex02]$ gcc *.c
+[ch4z@asus ex02]$ ./a.out
+zyxwvutsrqponmlkjihgfedcba[ch4z@asus ex02]$
