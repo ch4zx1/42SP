@@ -2,7 +2,7 @@
 #include "resources.h"
 #include "validators.h"
 
-extern int		g_borders[GAME_SIZE];
+extern int		g_borders[16];
 
 char	*filter_args(char **args)
 {
@@ -19,7 +19,7 @@ void	parse_arguments(char *str)
 	i = 0;
 	j = 0;
 	c = str[i];
-	while (c != '\0' && i < (GAME_SIZE * 2 - 1))
+	while (c != '\0' && i < (16 * 2 - 1))
 	{
 		if (ft_is_valid_num(c))
 		{

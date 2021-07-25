@@ -3,13 +3,13 @@
 
 # include "const_game.h"
 
-void	iterate_row_forw(int board[ROWS][COLS], int col,
+void	iterate_row_forw(int board[4][4], int col,
 	int *tallest_box, int *box_count);
-void	iterate_row_back(int board[ROWS][COLS], int col,
+void	iterate_row_back(int board[4][4], int col,
 	int *tallest_box, int *box_count);
-void	iterate_col_forw(int board[ROWS][COLS], int row,
+void	iterate_col_forw(int board[4][4], int row,
 	int *tallest_box, int *box_count);
-void	iterate_col_back(int board[ROWS][COLS], int row,
+void	iterate_col_back(int board[4][4], int row,
 	int *tallest_box, int *box_count);
 
 #endif

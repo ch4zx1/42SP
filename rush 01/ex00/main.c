@@ -1,7 +1,7 @@
 #include "main_facade.h"
 #define ALLOWED_ARGS	2
 
-int		g_borders[GAME_SIZE];
+int		g_borders[16];
 
 int		main(int argc, char **argv)
 {

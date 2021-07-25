@@ -2,8 +2,8 @@
 #ifndef BOARD_H
 #define BOARD_H
 
-void	show_board(int board[ROWS][COLS]);
-void	create_board(int board[ROWS][COLS]);
-void	copy_board(int board[ROWS][COLS], int copy[ROWS][COLS]);
+void	show_board(int board[4][4]);
+void	create_board(int board[4][4]);
+void	copy_board(int board[4][4], int copy[4][4]);
 
 #endif

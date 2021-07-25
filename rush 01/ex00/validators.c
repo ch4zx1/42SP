@@ -21,7 +21,7 @@ int		ft_is_valid_format(char *str)
 	i = 0;
 	valid_n_count = 0;
 	c = str[i];
-	while (c != '\0' && i < (GAME_SIZE * 2 - 1))
+	while (c != '\0' && i < (16 * 2 - 1))
 	{
 		if (i % 2 == 0)
 		{
@@ -35,21 +35,21 @@ int		ft_is_valid_format(char *str)
 		i++;
 		c = str[i];
 	}
-	if (valid_n_count != GAME_SIZE)
+	if (valid_n_count != 16)
 		return (0);
 	return (1);
 }
 
 int		ft_is_valid_argument(char *str)
 {
-	const int	expected_len = GAME_SIZE * 2;
+	const int	expected_len = 16 * 2;
 	int			is_valid_len;
 
 	is_valid_len = count_str_len(str) == expected_len;
 	return (is_valid_len && ft_is_valid_format(str));
 }
 
-int		ft_is_valid_solution(int board[ROWS][COLS])
+int		ft_is_valid_solution(int board[4][4])
 {
 	if (does_not_satisfy_upper_border(board) ||
 		does_not_satisfy_lower_border(board) ||
